@@ -32,3 +32,16 @@ def transactions():
 def stocks():
     return render_template('stocks.html')
 
+@app.route("/index/")
+def index():
+    return render_template('index.html')
+
+
+@app.route("/trades/")
+def trades():
+    return render_template('trades.html')
+
+@app.route("/childtest/")
+def childtest():
+    return render_template('childtest.html')
+
