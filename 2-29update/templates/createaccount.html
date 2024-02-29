@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+
+  form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+
+    .important { color: #336699; }
+</style>
+{% endblock %}
+{% block content %}
+  <h1>Create an Account</h1>
+  <p class="important">
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      
+        <input type="submit" value="Create Account">
+      </form>
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault(); // prevents the default form submission behavior
+  window.location.href = "/"; // redirects to the new page
+});
+</script>
+{% endblock %}

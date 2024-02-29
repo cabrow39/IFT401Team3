@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+    table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #f9f9f9;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+  </style>
+{% endblock %}
+{% block content %}
+<div>
+  <h1>List of Stocks</h1>
+
+  <table>
+    <!-- Table Header Row -->
+    <thead>
+      <tr>
+        <th>Stock Symbol</th>
+        <th>Number of Shares</th>
+        <th>Purchase Price</th>
+      </tr>
+    </thead>
+
+    <!-- Table Element (Row) -->
+    <tbody>
+      <td>{{ session['stock_symbol'] }}</td>
+      <td>{{ session['number_of_shares'] }}</td>
+      <td>${{ session['purchase_price'] }}</td>
+    </tbody>
+  </table>
+  <button onclick="window.location.href='/add_stock/'">Add a Stock</button>
+
+</div>
+
+{% endblock %}
