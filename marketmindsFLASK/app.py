@@ -4,7 +4,10 @@ from pydantic import BaseModel, field_validator, ValidationError
 
 import os, sys
 import datetime
-
+#to run this on localhost
+#make sure you have a venv folder
+#venv\Scripts\activate 
+#flask --app app.py --debug run
 app = Flask(__name__)
 
 @app.route('/')
