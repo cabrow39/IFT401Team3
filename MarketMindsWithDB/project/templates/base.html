@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Market Minds</title>
+  
+    <!-- Local CSS file for styling the application-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base_style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">  
+    
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  
+  <link href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/magnific-popup.min.css') }}" rel="stylesheet">
+  
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    <!-- Additional Styling -->
+    {% block styling %}
+  <style>
+    .blackbackground
+    {
+      background-color: black;
+    }
+  </style>
+    {% endblock %}
+  </head>
+    <div class="crypt-dark">
+      <header>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('stocks.index') }}">Market-Minds</a></li>
+          </ul>
+          <ul class="nav-list">
+            {% if current_user.is_authenticated %}
+              
+              <li><a class="nav-item" href="{{ url_for('users.user_trades') }}">Trade</a></li>
+              <li><a class="nav-item" href="{{ url_for('users.user_history') }}">History</a></li>
+              <li><a class="nav-item" href="{{ url_for('users.user_portfolio') }}">Portfolio</a></li>
+              <div class="dropdown_pro">
+                <input type="checkbox" id="dropdown">
+                <label class="dropdown__face" for="dropdown">
+                  <div class="dropdown__text"><img src="{{ url_for('static',filename='images/t1.jpg')}}" alt=""></div>
+                  <div class="dropdown__arrow"></div>
+                </label>
+                <ul class="dropdown__items">
+                  <a class="dropdown-item" href="{{ url_for('users.user_profile') }}">Portfolio</a>
+                      <a class="dropdown-item" href="{{ url_for('users.user_settings') }}">Settings</a>
+                      <a class="dropdown-item" href="{{ url_for('users.logout') }}">Logout</a>
+                </ul>
+              </div>
+
+            {% else %}
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('users.register') }}">Register</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('users.login') }}">Login</a></li>
+            {% endif %}
+
+          </ul>
+        </nav>
+    </header>
+  </div>
+
+      <div class="messages">
+        <!-- flash messages - supported categories: success, info, error, message (default) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="flash-message flash-message-{{ category }}">
+                <p>{{ message }}</p>
+                <span class="close-btn" onclick="this.parentElement.style.opacity=0;">
+                  <svg width="12" height="12" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m49.941 35.891 33.531-33.531 14.168 14.168-33.531 33.414 33.531 33.531-14.168 14.168-33.531-33.531-33.414 33.531-14.168-14.168 33.531-33.531-33.531-33.414 14.168-14.168z" fill-rule="evenodd" fill="currentColor"/>
+                  </svg>
+                </span>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+      <main class="content">
+        <!-- child template -->
+        {% block content %}
+        {% endblock %}
+      </main>
+    </body>
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>MarketMinds</h3>
+            <p>
+              7001 E Williams Field Rd <br>
+              Arizona, AZ 85212<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 480 727 1585<br>
+              <strong>Email:</strong> cmwalto3@asu.edu<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Navigation</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Portfolio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Trade</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">History</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Login</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Register</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>MarketMinds</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+        Designed by Caleb Walton
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/magnific-popup.min.js') }}"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='js/bundle.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  
+    <script>
+      $('.video-popup').magnificPopup({
+        type: 'iframe',
+        removalDelay: 300,
+        mainClass: 'mfp-fade'
+      });
+    </script>
+  </body>
+  
+</html>

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block styling %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form_style.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+  
+  <div class="signin">
+    <div class="content"> 
+  <h1 class="headercenter">User Registration</h1>
+  <div class="form"> 
+
+    <div class="inputBox"> 
+  <form method="post">
+    {{ form.csrf_token }}
+
+    <div class="field">
+      {{ form.email.label }}
+      {{ form.email }}
+      {% for error in form.email.errors %}
+        <p class="validation-error">[{{ error }}]</p>
+      {% endfor %}
+    </div>
+
+    <div class="field">
+      {{ form.password.label }}
+      {{ form.password }}
+      {% for error in form.password.errors %}
+        <p class="validation-error">[{{ error }}]</p>
+      {% endfor %}
+    </div>
+    <div class="my-1">
+      <div class="checkboox-area">
+          <input type="checkbox" class="checkboxes" id="terms-agree" required checked>
+          <label class="custom-control-label" for="terms-agree">I agree to the terms of services</label>
+      </div>
+      </div>
+      <div class="headercenter">
+
+    <div class="field">
+      <button type="submit">Register</button>
+    </div>
+      </div>
+  </form>
+  </div>
+  </div>
+    
+  </div>
+  </div>
+  
+
+
+{% endblock %}
