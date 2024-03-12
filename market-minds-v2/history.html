@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="crypt-dark">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Market-Minds - Cryptocurrency</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/ui.css">
+</head>
+
+<body class="crypt-dark">
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+    
+          <div class="logo me-auto">
+            <h1><a href="index.html">Market-Minds</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+          </div>
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto" href="index.html">Home</a></li>
+                <li><a class="nav-link scrollto" href="portfolio.html">Portfolio</a></li>
+                <li><a class="nav-link scrollto" href="trade.html">Trade</a></li>
+                <li><a class="nav-link scrollto active" href="history.html">Transactions
+                <li><a class="nav-link scrollto" href="stocks.html">Create Stocks</a></li>
+              </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+          <a href="#" class="login-btn scrollto" data-toggle="modal" data-target="#exampleModalCenter3">Login</a>
+          <a href="#" class="register-btn scrollto" data-toggle="modal" data-target="#exampleModalCenter4">Register</a>
+          <!-- Profile dropdown start -->
+          <div class="dropdown_pro">
+            <input type="checkbox" id="dropdown">
+            <label class="dropdown__face" for="dropdown">
+              <div class="dropdown__text"><img src="assets/images/t1.jpg" alt=""></div>
+              <div class="dropdown__arrow"></div>
+            </label>
+            <ul class="dropdown__items">
+              <li><a href="#"><i class="bi bi-person"></i> Profile</a></li>
+              <li><a href="#"><i class="bi bi-gear"></i> Setings</a></li>
+              <li><a href="#"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
+            </ul>
+          </div>
+          <!-- Profile dropdown end  -->
+            <!-- Login Modal Desctop -->
+            <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="cryptorio-forms cryptorio-forms-dark pt-5 pb-5">
+                        <!-- <div class="logo">
+                            <img src="images/logo.png" alt="logo-image">
+                        </div> -->
+                        <h3 class="p-2">Welcome To Login</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                        <div class="cryptorio-main-form">
+                            
+                            <form action="" class="text-left">
+                                <label for="email">Account Name</label>
+                                <input type="text" id="email" name="email" placeholder="Your email/cellphone">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Please Input Your Password">
+
+                                <input type="submit" value="Log In" class="crypt-button-red-full">
+                            </form>
+                            <div class="from-bottom">
+                                <p><a href="register.html">Sign Up</a></p>
+                                <p><a href="forgot.html">Forgot Password</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>                           
+            <!-- Register Modal Desctop-->
+            <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="cryptorio-forms cryptorio-forms-dark pt-5 pb-5">
+                        <!-- <div class="logo">
+                            <img src="images/logo.png" alt="logo-image">
+                        </div> -->
+                        <h3 class="p-2">Register</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                        <div class="cryptorio-main-form">
+                            <form action="" class="text-left">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email" placeholder="Your email/cellphone">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="6-20 letters and numbers">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" id="confirm-password" name="password" placeholder="6-20 letters and numbers">
+                                <div class="my-1">
+                                <div class="checkboox-area">
+                                    <input type="checkbox" class="custom-control-input" id="terms-agree">
+                                    <label class="custom-control-label" for="terms-agree">I agree to the terms of services</label>
+                                </div>
+                                </div>
+                                <input type="submit" value="SignUp" class="crypt-button-red-full">
+                            </form>
+                            <div class="from-bottom">
+                                <p><a href="register.html">Sign Up</a></p>
+                                <p><a href="forgot.html">Forgot Password</a></p>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+          
+    
+        </div>
+      </header><!-- End Header -->
+
+
+    <div class="container-fluid">
+        <div class="row sm-gutters">
+            <div class="col-xl-12 mt-5">
+                <div>
+                    <div class="crypt-market-status mt-5">
+                        <div>
+                            <ul class="history_title">
+                                <li><a href="#">Transaction History</a></li>
+                                <li>
+                                    <form class="search">
+                                        <input type="text" id="search" class="search__input text-white" placeholder="Search...." />
+                                        <button type="button" class="search__button">
+                                            <i class="bi bi-search" style="color: #ffffff;"></i>
+                                        </button>
+                                      </form>
+                                    </li>
+                            </ul>
+                            <ul class="nav nav-tabs">
+                                <li role="presentation"><a href="#active-orders" class="active" data-toggle="tab">Active
+                                        Orders</a></li>
+                                <li role="presentation"><a href="#closed-orders" data-toggle="tab">Closed Orders</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="active-orders">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Time</th>
+                                                <th scope="col">Symbol</th>
+                                                <th scope="col">Trade Type</th>
+                                                <th scope="col">Quantity (BTC)</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">7700.84</td>
+                                                <td>02.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8400.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">9700.80</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8720.70</td>
+                                                <td>02.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8700.84</td>
+                                                <td>01.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8700.80</td>
+                                                <td>02.04.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">2750.80</td>
+                                                <td>04.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8700.80</td>
+                                                <td>02.05.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Sell at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">10.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    <div class="no-orders text-center p-160"><img src="assets/images/empty.svg"
+                                            alt="no-orders"></div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="closed-orders">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Time</th>
+                                                <th scope="col">Symbol</th>
+                                                <th scope="col">Trade Type</th>
+                                                <th scope="col">Quantity (BTC)</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">7700.84</td>
+                                                <td>02.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8400.50</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">9700.80</td>
+                                                <td>03.01.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8720.70</td>
+                                                <td>02.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8700.84</td>
+                                                <td>01.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8700.80</td>
+                                                <td>02.04.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">2750.80</td>
+                                                <td>04.02.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-down">AAPL</td>
+                                                <td class="crypt-down">Stock Buy at Market</td>
+                                                <td class="crypt-down">0.000056</td>
+                                                <td class="crypt-down">8700.80</td>
+                                                <td>02.05.2024</td>
+                                            </tr>
+                                            <tr>
+                                                <th>22:35:59</th>
+                                                <td class="crypt-up">AAPL</td>
+                                                <td class="crypt-up">Stock Buy at Market</td>
+                                                <td class="crypt-up">0.000056</td>
+                                                <td class="crypt-up">8711.80</td>
+                                                <td>03.12.2024</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script src="assets/js/bundle.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script>
+        // search bar js 
+
+        function searchBooks() {
+        var searchTerm = document.getElementById("search").value;
+        var books = document.getElementsByClassName("card");
+        for (var i = 0; i < books.length; i++) {
+            var bookName = books[i].getElementsByClassName("card-header")[0].innerHTML;
+            if (bookName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
+            books[i].style.display = "block";
+            } else {
+            books[i].style.display = "none";
+            }
+        }
+        }
+
+    </script>
+
+
+</body>
+
+</html>
