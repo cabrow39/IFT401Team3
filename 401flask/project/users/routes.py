@@ -63,11 +63,11 @@ def login():
                 flash(f'You are now logged in as: {current_user.email}!')
                 current_app.logger.info(f'Logged in user: {current_user.email}')
 
-                # If the next URL is not specified, redirect to the user profile - NEW!!
+                # If the next URL is not specified, redirect to the user profile 
                 if not request.args.get('next'):
                     return redirect(url_for('users.user_profile'))
 
-                # Process the query to determine if the user should be redirected after logging in - NEW!!
+                # Process the query to determine if the user should be redirected after logging in 
                 next_url = request.args.get('next')
                 if urlparse(next_url).scheme != '' or urlparse(next_url).netloc != '':
                     current_app.logger.info(f'Invalid next path in login request: {next_url}')

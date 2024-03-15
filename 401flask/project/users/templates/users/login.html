@@ -1,42 +1,63 @@
 {% extends "base.html" %}
-
-{% block styling %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/form_style.css') }}">
-{% endblock %}
-
 {% block content %}
-<div class="form-wrap">
-  <h1 class="headercenter">Login</h1>
 
-  <form method="post">
-    {{ form.csrf_token }}
+<body class="crypt-dark">
 
-    <div class="field">
-      {{ form.email.label }}
-      {{ form.email }}
-      {% for error in form.email.errors %}
-        <p class="validation-error">[{{ error }}]</p>
-      {% endfor %}
-    </div>
+      <!-- Main Content -->
+      <div class="container">
+          <div class="row">
+              <div class="col-md-3"></div>
+              <div class="col-md-6">
+                  <div class="cryptorio-forms cryptorio-forms-dark pt-5 pb-5">
+                      <div class="logo">
+                      </div>
+                      <h3 class="p-4">Login</h3>
+                      <div class="cryptorio-main-form">
+                          <form action="" class="text-left" method="post">
+                            {{ form.csrf_token }}
 
-    <div class="field">
-      {{ form.password.label }}
-      {{ form.password }}
-      {% for error in form.password.errors %}
-        <p class="validation-error">[{{ error }}]</p>
-      {% endfor %}
-    </div>
+                            <div class="field">
+                              {{ form.email.label }}
+                              {{ form.email }}
+                              {% for error in form.email.errors %}
+                                <p class="validation-error">[{{ error }}]</p>
+                              {% endfor %}
+                            </div>
+                        
+                            <div class="field">
+                              {{ form.password.label }}
+                              {{ form.password }}
+                              {% for error in form.password.errors %}
+                                <p class="validation-error">[{{ error }}]</p>
+                              {% endfor %}
+                            </div>
+                        
+                            <div class="field checkbox">
+                              {{ form.remember_me.label }}
+                              {{ form.remember_me() }}
+                            </div>
+                            <div class="headercenter">
+                            <div class="field">
+                              {{ form.submit() }}
+                            </div>
+                          </div>
+                          </form>
+                          <div class="from-bottom">
+                              <p><a href="register.html">Sign Up</a></p>
+                              <p><a href="forgot.html">Forgot Password</a></p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-3"></div>
+          </div>
+      </div>
+      <footer>
+          
+      </footer>
+      <script src="https://s3.tradingview.com/tv.js"></script>
+      <script src="assets/js/bundle.js"></script>
+      <script src="assets/js/main.js"></script>
+  </body>
 
-    <div class="field checkbox">
-      {{ form.remember_me.label }}
-      {{ form.remember_me() }}
-    </div>
-    <div class="headercenter">
-    <div class="field">
-      {{ form.submit() }}
-    </div>
-  </div>
-  </form>
-</div>
-
-{% endblock %}
+  {% endblock %}

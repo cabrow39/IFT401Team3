@@ -4,7 +4,7 @@ from sqlalchemy.orm import mapped_column
 from werkzeug.security import generate_password_hash, check_password_hash
 import flask_login
 
-class User(flask_login.UserMixin, database.Model):  # UPDATED!
+class User(flask_login.UserMixin, database.Model):  
     """
     Class that represents a user of the application
 
@@ -12,7 +12,6 @@ class User(flask_login.UserMixin, database.Model):  # UPDATED!
         * email - email address of the user
         * hashed password - hashed password (using werkzeug.security)
 
-    REMEMBER: Never store the plaintext password in a database!
     """
     __tablename__ = 'users'
 
@@ -36,18 +35,12 @@ class User(flask_login.UserMixin, database.Model):  # UPDATED!
 
 class Stock(database.Model):
     """
-    Class that represents a purchased stock in a portfolio.
 
     The following attributes of a stock are stored in this table:
         stock symbol (type: string)
         number of shares (type: integer)
         purchase price (type: integer)
 
-    Note: Due to a limitation in the data types supported by SQLite, the
-          purchase price is stored as an integer:
-              $24.10 -> 2410
-              $100.00 -> 10000
-              $87.65 -> 8765
     """
 
     __tablename__ = 'stocks'

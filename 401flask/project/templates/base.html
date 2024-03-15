@@ -7,7 +7,6 @@
     <title>Market Minds</title>
   
     <!-- Local CSS file for styling the application-->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/base_style.css') }}">
   <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
   <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">  
     
@@ -24,43 +23,65 @@
   
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.cs')}}" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png')}}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/icons.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/ui.css') }}">
     <!-- Additional Styling -->
     {% block styling %}
     {% endblock %}
   </head>
-    <div class="crypt-dark">
-      <header>
-        <nav class="nav">
-          <ul class="nav-list">
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('stocks.index') }}">Market-Minds</a></li>
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <div class="logo me-auto">
+        <h1><a href="{{ url_for('stocks.index') }}">Market-Minds</a></h1>
+       
+      </div>
+      {% if current_user.is_authenticated %}
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+            <li><a class="nav-link scrollto" href="{{ url_for('stocks.index') }}">Home</a></li>
+            <li><a class="nav-link scrollto" href="{{ url_for('users.user_portfolio') }}">Portfolio</a></li>
+            <li><a class="nav-link scrollto" href="{{ url_for('users.user_trades') }}">Trade</a></li>
+            <li><a class="nav-link scrollto active" href="{{ url_for('users.user_history') }}">Transactions
+            <li><a class="nav-link scrollto" href="{{ url_for('stocks.add_stock') }}">Create Stocks</a></li>
           </ul>
-          <ul class="nav-list">
-            {% if current_user.is_authenticated %}
+          <div class="dropdown_pro">
+            <input type="checkbox" id="dropdown">
+            <label class="dropdown__face" for="dropdown">
+              <div class="dropdown__text"><img src="{{ url_for('static',filename='images/t1.jpg')}}" alt=""></div>
+              <div class="dropdown__arrow"></div>
+            </label>
+            <ul class="dropdown__items">
+              <a class="dropdown-item" href="{{ url_for('users.user_profile') }}">Portfolio</a>
+                  <a class="dropdown-item" href="{{ url_for('users.user_settings') }}">Settings</a>
+                  <a class="dropdown-item" href="{{ url_for('users.logout') }}">Logout</a>
+            </ul>
+          </div>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      {% else %}
+
+      <a href="{{ url_for('users.login') }}" class="login-btn scrollto" >Login</a>
+      <a href="{{ url_for('users.register') }}" class="register-btn scrollto">Register</a>
+      {% endif %}
+     
+          </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+     
+                    
               
-              <li><a class="nav-item" href="{{ url_for('users.user_trades') }}">Trade</a></li>
-              <li><a class="nav-item" href="{{ url_for('users.user_history') }}">History</a></li>
-              <li><a class="nav-item" href="{{ url_for('users.user_portfolio') }}">Portfolio</a></li>
-              <div class="dropdown_pro">
-                <input type="checkbox" id="dropdown">
-                <label class="dropdown__face" for="dropdown">
-                  <div class="dropdown__text"><img src="{{ url_for('static',filename='images/t1.jpg')}}" alt=""></div>
-                  <div class="dropdown__arrow"></div>
-                </label>
-                <ul class="dropdown__items">
-                  <a class="dropdown-item" href="{{ url_for('users.user_profile') }}">Portfolio</a>
-                      <a class="dropdown-item" href="{{ url_for('users.user_settings') }}">Settings</a>
-                      <a class="dropdown-item" href="{{ url_for('users.logout') }}">Logout</a>
-                </ul>
-              </div>
-
-            {% else %}
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('users.register') }}">Register</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('users.login') }}">Login</a></li>
-            {% endif %}
-
-          </ul>
-        </nav>
-    </header>
+            
+          
+        </div>
+    </div>
+  </header><!-- End Header -->
   </div>
 
       <div class="messages">

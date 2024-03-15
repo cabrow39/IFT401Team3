@@ -1,56 +1,64 @@
 {% extends "base.html" %}
-
-{% block styling %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/form_style.css') }}">
-
-{% endblock %}
-
 {% block content %}
 
-  
-  <div class="signin">
-    <div class="content"> 
-  <h1 class="headercenter">User Registration</h1>
-  <div class="form"> 
+<body class="crypt-dark">
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="cryptorio-forms cryptorio-forms-dark pt-5 pb-5">
+                <div class="logo">
+                </div>
+                <h3 class="p-4">Register</h3>
+                <div class="cryptorio-main-form">
+                    <form action="" class="text-left" method="post">
+                        {{ form.csrf_token }}
 
-    <div class="inputBox"> 
-  <form method="post">
-    {{ form.csrf_token }}
-
-    <div class="field">
-      {{ form.email.label }}
-      {{ form.email }}
-      {% for error in form.email.errors %}
-        <p class="validation-error">[{{ error }}]</p>
-      {% endfor %}
+                        <div class="field">
+                            {{ form.email.label }}
+                            {{ form.email }}
+                            {% for error in form.email.errors %}
+                              <p class="validation-error">[{{ error }}]</p>
+                            {% endfor %}
+                          </div>
+                      
+                          <div class="field">
+                            {{ form.password.label }}
+                            {{ form.password }}
+                            {% for error in form.password.errors %}
+                              <p class="validation-error">[{{ error }}]</p>
+                            {% endfor %}
+                          </div>
+                          <div class="field">
+                            {{ form.password_confirmation.label }}
+                            {{ form.password_confirmation }}
+                            {% for error in form.password_confirmation.errors %}
+                              <p class="validation-error">[{{ error }}]</p>
+                            {% endfor %}
+                          </div>
+                          <div class="my-1">
+                            <div class="checkboox-area">
+                                <input type="checkbox" class="custom-control-input" id="terms-agree" required checked>
+                                <label class="custom-control-label" for="terms-agree">I agree to the terms of services</label>
+                            </div>
+                            </div>
+                            <div class="headercenter">
+                      
+                          <div class="field">
+                            <button type="submit"class="crypt-button-red-full">Register</button>
+                          </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
     </div>
-
-    <div class="field">
-      {{ form.password.label }}
-      {{ form.password }}
-      {% for error in form.password.errors %}
-        <p class="validation-error">[{{ error }}]</p>
-      {% endfor %}
-    </div>
-    <div class="my-1">
-      <div class="checkboox-area">
-          <input type="checkbox" class="custom-control-input" id="terms-agree" required checked>
-          <label class="custom-control-label" for="terms-agree">I agree to the terms of services</label>
-      </div>
-      </div>
-      <div class="headercenter">
-
-    <div class="field">
-      <button type="submit">Register</button>
-    </div>
-      </div>
-  </form>
-  </div>
-  </div>
+</div>
+<footer>
     
-  </div>
-  </div>
-  
-
-
+</footer>
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script src="assets/js/bundle.js"></script>
+</body>
 {% endblock %}
