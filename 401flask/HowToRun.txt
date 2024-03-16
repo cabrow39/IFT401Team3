@@ -1,0 +1,7 @@
+first run the venv command to enter virtual environment
+
+venv\scripts\activate
+
+then run the flask commands to run the app
+
+flask --app app.py --debug run
