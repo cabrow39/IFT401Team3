@@ -5,7 +5,7 @@ from flask.logging import default_handler
 import os
 from flask_wtf.csrf import CSRFProtect
 from flask_migrate import Migrate
-
+from flask_mail import Mail
 def create_app():
     # Create the Flask application
     app = Flask(__name__)
@@ -64,6 +64,7 @@ metadata = MetaData(naming_convention=convention)
 # but without any arguments passed in. These instances are not
 # attached to the Flask application at this point.
 database = SQLAlchemy(metadata=metadata)
+mail = Mail()
 
 
 def initialize_extensions(app):
@@ -73,7 +74,7 @@ def initialize_extensions(app):
     db_migration.init_app(app, database)
     csrf_protection.init_app(app)  
     login.init_app(app)
-
+    mail.init_app(app)
     from project.models import User
 
     @login.user_loader
