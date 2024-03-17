@@ -1320,6 +1320,7 @@ p {
 
 /*======== Profile dropdown menu  ==========*/
 .dropdown_pro {
+
     position: relative;
     filter: url(#goo);
     margin-left: 10px;
@@ -1331,6 +1332,9 @@ p {
   }
 
   .dropdown__items {
+    display: flex;
+    align-items: center;
+    flex-direction:column;
     margin: 0;
     position: absolute;
     right: 0;
@@ -1352,7 +1356,6 @@ p {
     border-radius: 50%;
   }
   .dropdown__items li a{
-    display: inline-block;
     font-size: 15px;
     padding: 4px 0;
     color: #fff;
