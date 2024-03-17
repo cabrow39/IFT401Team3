@@ -15,7 +15,6 @@ class User(flask_login.UserMixin, database.Model):
 
     """
     __tablename__ = 'users'
-
     id = mapped_column(Integer(), primary_key=True)
     email = mapped_column(String(), unique=True)
     password_hashed = mapped_column(String(128))

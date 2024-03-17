@@ -1,13 +1,15 @@
 from . import users_blueprint
 from flask import render_template, flash, abort, request, current_app, redirect, url_for
-from .forms import RegistrationForm, LoginForm, EmailForm, PasswordForm
+from .forms import RegistrationForm, LoginForm, EmailForm, PasswordForm, ChangePasswordForm
 from project.models import User
 from sqlalchemy.exc import IntegrityError
 from project import database, mail
 from flask_mail import Message
 from flask import copy_current_request_context
 from threading import Thread
-
+from .forms import RegistrationForm, LoginForm
+from flask_login import login_user, current_user, login_required, logout_user
+from urllib.parse import urlparse
 from itsdangerous import URLSafeTimedSerializer
 from itsdangerous.exc import BadSignature
 from datetime import datetime
@@ -67,7 +69,7 @@ def admin():
     abort(403)
 @users_blueprint.route('/about')
 def about():
-    return render_template('users/about.html', company_name='TestDriven.io')
+    return render_template('users/about.html', company_name='MarketMinds')
 @users_blueprint.errorhandler(403)
 def page_forbidden(e):
     return render_template('users/403.html'), 403
@@ -80,6 +82,7 @@ def register():
         if form.validate_on_submit():
             try:
                 new_user = User(form.email.data, form.password.data)
+
                 database.session.add(new_user)
                 database.session.commit()
                 flash(f' You are now registered under: {new_user.email}!')
@@ -100,13 +103,11 @@ def register():
                 database.session.rollback()
                 flash(f'Email ({form.email.data}) already exists.', 'error')
         else:
-            flash(f"Error in form data!")
+            flash(f"Error in form!")
 
     return render_template('users/register.html', form=form)
 
-from .forms import RegistrationForm, LoginForm
-from flask_login import login_user, current_user, login_required, logout_user
-from urllib.parse import urlparse
+
 
 
 @users_blueprint.route('/login', methods=['GET', 'POST'])
@@ -146,7 +147,6 @@ def login():
                 return redirect(next_url)
              flash('Incorrect login credentials.')
 
-        flash('Incorrect login credentials.')
     return render_template('users/login.html', form=form)
 @users_blueprint.route('/logout')
 @login_required
@@ -240,3 +240,40 @@ def password_reset_via_email():
         return redirect(url_for('users.login'))
 
     return render_template('users/password_reset_via_email.html', form=form)
+
+@users_blueprint.route('/change_password', methods=['GET', 'POST'])
+@login_required
+def change_password():
+    form = ChangePasswordForm()
+
+    if form.validate_on_submit():
+        if current_user.is_password_correct(form.current_password.data):
+            current_user.set_password(form.new_password.data)
+            database.session.add(current_user)
+            database.session.commit()
+            flash('Password has been updated!', 'success')
+            current_app.logger.info(f'Password updated for user: {current_user.email}')
+            return redirect(url_for('users.user_profile'))
+        else:
+            flash('ERROR! Incorrect user credentials!')
+            current_app.logger.info(f'Incorrect password change for user: {current_user.email}')
+    return render_template('users/change_password.html', form=form)
+
+
+
+@users_blueprint.route('/resend_email_confirmation')
+@login_required
+def resend_email_confirmation():
+    @copy_current_request_context
+    def send_email(email_message):
+        with current_app.app_context():
+            mail.send(email_message)
+
+    # Send an email to confirm the user's email address
+    message = generate_confirmation_email(current_user.email)
+    email_thread = Thread(target=send_email, args=[message])
+    email_thread.start()
+
+    flash('Email sent to confirm your email address.  Please check your email!', 'success')
+    current_app.logger.info(f'Email re-sent to confirm email address for user: {current_user.email}')
+    return redirect(url_for('users.user_profile'))

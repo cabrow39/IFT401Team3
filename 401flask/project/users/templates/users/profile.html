@@ -1,53 +1,68 @@
 {% extends "base.html" %}
 
 {% block styling %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 {% endblock %}
 
 {% block content %}
-<head>
-    <title>User Profile Page</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
+<body class="crypt-dark">
 
-        .profile {
-            width: 400px;
-            padding: 20px;
-            background-color: #333;
-            border-radius: 10px;
-            margin: 0 auto;
-            margin-top: 50px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
-        }
+    <!-- Main Content -->
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="cryptorio-forms cryptorio-forms-dark pt-5 pb-5">
+                   
+                    <h3 class="p-4">Profile</h3>
+                    <div class="cryptorio-main-form">
+<div class="row">
+  <div class="cryptorio-forms-dark cryptorio-forms pt-5 pb-5">
+    <h2>Account</h2>
+  </div>
+  <div class="row">
+    <div class="cryptorio-forms-dark cryptorio-forms pt-5 pb-5">
+    <p>Email: {{ current_user.email }}</p>
+  </div>
+  </div>
+</div>
+<div class="row">
+    <div class="cryptorio-forms-dark cryptorio-forms pt-5 pb-5">
+    <h2>Account Statistics</h2>
+  </div>
+  <div class="row">
+    <div class="cryptorio-forms-dark cryptorio-forms pt-5 pb-5">
+    <p>Joined on {{ current_user.registered_on.strftime("%A, %B %d, %Y") }}</p>
+    {% if current_user.email_confirmed %} 
+      <p>Email address confirmed on {{ current_user.email_confirmed_on.strftime("%A, %B %d, %Y") }}</p>
+    {% else %}
+      <p>Email address has not been confirmed!</p>
+    {% endif %}
+  </div>
+  </div>
+</div>
 
-        h1 {
-            text-align: center;
-        }
-
-        .credentials {
-            margin-top: 20px;
-        }
-
-        .credentials p {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="profile">
-        <h1>User Profile</h1>
-        <div class="credentials">
-            <p>Username: JohnDoe</p>
-            <p>Email:{{ current_user.email }}</p>
-            <p>Location: Phoenix</p>
+<div class="row">
+    <div class="cryptorio-forms-dark cryptorio-forms pt-5 pb-5">
+    <h2>Account Actions</h2>
+  </div>
+  <div class="row">
+    <div class="cryptorio-forms-dark cryptorio-forms pt-5 pb-5">
+    <p><a class="crypt-button-red-full" href="{{ url_for('users.change_password') }}">Change Password</a></p>
+    {% if not current_user.email_confirmed %}
+      <p><a class="crypt-button-red-full" href="{{ url_for('users.resend_email_confirmation') }}">Resend Email Confirmation</a></p>
+    {% endif %}
+  </div>
+  </div>
+</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
-</html>
+
+
 
 
 {% endblock %}

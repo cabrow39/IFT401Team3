@@ -318,8 +318,8 @@
                                             
                                         </tbody>
                                     </table>
-                                    <div class="no-orders text-center p-160"><img src="assets/images/empty.svg"
-                                            alt="no-orders"></div>
+                                    <img src="{{ url_for('static', filename='/images/empty.svg') }}" alt="Empty Image">alt="no-orders"></div>
+                                    alt="no-orders"></div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="closed-orders">
                                     <table class="table table-striped">
@@ -421,8 +421,8 @@
 
     </footer>
     <script src="https://s3.tradingview.com/tv.js"></script>
-    <script src="assets/js/bundle.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="{{ url_for('static', filename='/js/bundle.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/main.js')}}"></script>
 
 
     <script>
